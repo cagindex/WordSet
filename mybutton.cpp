@@ -8,8 +8,8 @@
  * A self designed button
  * @author 派蒙今天吃什么
  */
-myButton::myButton(QWidget *parent, int red, int green, int blue)
-    : QWidget{parent},r(red),g(green),b(blue)
+myButton::myButton(QWidget *parent, int red, int green, int blue, int t)
+    : QWidget{parent},r(red),g(green),b(blue),transparentValue(t)
 {
 }
 

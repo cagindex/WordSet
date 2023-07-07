@@ -5,6 +5,7 @@
 #include "cardset.h"
 #include "wordsetwidget.h"
 #include "addingwidget.h"
+#include "mainwidget.h"
 #include "reviewwidget.h"
 #include "mylabelbutton.h"
 #include "calendar.h"
@@ -42,6 +43,8 @@ private:
     //复习词汇动画对象
     QPropertyAnimation* animation5;
     QPropertyAnimation* animation6;
+    //主界面对象
+    MainWidget* main_widget;
     //词库对象
     WordSetWidget* wordSet_widget;
     //添加词汇对象

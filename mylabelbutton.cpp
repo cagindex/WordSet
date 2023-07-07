@@ -8,7 +8,7 @@
  * @param blue
  * @author 派蒙今天吃什么
  */
-myLabelButton::myLabelButton(QWidget* parent, int red, int green, int blue):myButton(parent, red, green, blue)
+myLabelButton::myLabelButton(QWidget* parent, int red, int green, int blue, int t):myButton(parent, red, green, blue,t)
 {
     label = new QLabel(this);
     label->setAlignment(Qt::AlignCenter);

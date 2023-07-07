@@ -22,12 +22,14 @@ set(PROJECT_SOURCES
         myLineEdit.cpp
         addingwidget.cpp
         reviewwidget.cpp
+        mainWidget.cpp
         myTextEdit.cpp
         cardset.cpp
         card.cpp
         calendar.cpp
         mainwindow.h
         wordsetwidget.h
+        mainWidget.h
         basicbutton.h
         addingwidget.h
         myLabelButton.h

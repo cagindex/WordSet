@@ -7,7 +7,7 @@ WordSetWidget::WordSetWidget(QWidget *parent)
     this->resize(400, 700);
     this->setAutoFillBackground(true);
     QPalette pal = this->palette();
-    pal.setBrush(this->backgroundRole(), QBrush(QColor(255,255,255)));
+    pal.setBrush(this->backgroundRole(), QBrush(QColor(255,255,255, 200)));
     setPalette(pal);
     //设置标题
     QLabel* label = new QLabel(this);
@@ -24,7 +24,7 @@ WordSetWidget::WordSetWidget(QWidget *parent)
     exit_btn = new QPushButton(this);
     //设置大小
     exit_btn->resize(40, 40);
-    exit_btn->setStyleSheet("border-image:url(:/img/right.png);");
+    exit_btn->setStyleSheet("border-image:url(:/img/down.png);");
 
     //设置全部已经学习的词汇
     learned_btn = new BasicButton(this, 255, 0, 0);

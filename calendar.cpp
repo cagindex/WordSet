@@ -11,9 +11,9 @@ Calendar::Calendar(QWidget *parent, int red, int green, int blue, int t)
     label_date->setText(GetDate());
 
     icon = new QWidget(this);
-    icon->resize(70, 70);
-    icon->move(40, 20);
-    icon->setStyleSheet("border-image:url(:/img/background);");
+    icon->resize(54, 54);
+    icon->move(75-27, 30);
+    icon->setStyleSheet("border-image:url(:/img/calendar.png);");
 }
 
 QString Calendar::GetDate()

@@ -8,10 +8,10 @@ class myButton : public QWidget
 {
     Q_OBJECT
 public:
-    explicit myButton(QWidget *parent = nullptr, int red = 255, int green = 255, int blue = 255);
+    explicit myButton(QWidget *parent = nullptr, int red = 255, int green = 255, int blue = 255, int t = 255);
 
     int r, g, b;
-    int transparentValue = 255;
+    int transparentValue;
     qreal xRadius = 15;
     qreal yRadius = 15;
 

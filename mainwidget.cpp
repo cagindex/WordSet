@@ -1,63 +1,7 @@
-#include "mainwindow.h"
-#include "./ui_mainwindow.h"
-#include "wordsetwidget.h"
+#include "mainwidget.h"
 
-#include <QGraphicsOpacityEffect>
-#include <QPushButton>
-#include <QDebug>
-#include <QLabel>
-#include <QFont>
-#include <QGraphicsBlurEffect>
-
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
-{
-    ui->setupUi(this);
-
-    //设置窗口大小
-    this->setFixedSize(400, 700);
-
-    //加载背景图片
-    this->setAutoFillBackground(true);
-    QPalette pal = this->palette();
-    pal.setBrush(this->backgroundRole(), QBrush(QPixmap(":/img/background.jpg").scaled(this->size())));
-    setPalette(pal);
-    //构建词库界面
-    wordSet_widget = new WordSetWidget(this);
-    //将词库界面移动到底部
-    wordSet_widget->move(0, 700);
-    wordSet_widget->show();
-
-    //添加词库界面
-    adding_widget = new AddingWidget(this);
-    adding_widget->move(-400, 0);
-    adding_widget->show();
-    //添加cardset对象
-    cardSetP = new CardSet(this);
-    adding_widget->setCardSet(cardSetP);
-
-    //复习词汇界面
-    review_widget = new ReviewWidget(this, cardSetP, 3);
-    review_widget->move(400, 0);
-    review_widget->show();
-
-    //设置开始界面
-    SetMainPage();
-
-    QGraphicsBlurEffect* blureffect = new QGraphicsBlurEffect;
-    blureffect->setBlurRadius(5);
-    this->setGraphicsEffect(blureffect);
-}
-
-MainWindow::~MainWindow()
-{
-    delete ui;
-    delete data_widget;
-}
-
-//设置stackWidget的MainPage
-void MainWindow::SetMainPage()
+MainWidget::MainWidget(QWidget *parent)
+    : QWidget{parent}
 {
     //General paramete
     //词库高度
@@ -179,4 +123,5 @@ void MainWindow::SetMainPage()
      */
     calendar = new Calendar(this, 255, 255, 255, 155);
     calendar->move(123, 200);
+
 }

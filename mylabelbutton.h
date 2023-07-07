@@ -7,7 +7,7 @@
 class myLabelButton : public myButton
 {
 public:
-    myLabelButton(QWidget* parent = nullptr, int red = 255, int green = 255, int blue = 255);
+    myLabelButton(QWidget* parent = nullptr, int red = 255, int green = 255, int blue = 255, int t = 255);
 
     void myResize(QSize s);
     void myResize(int w, int h);

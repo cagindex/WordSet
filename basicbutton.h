@@ -13,7 +13,7 @@ class BasicButton : public myButton
 {
     Q_OBJECT
 public:
-    explicit BasicButton(QWidget *parent = nullptr, int red = 255, int blue = 255, int green = 255, QString leftIconPath = ":/img/background.jpg",
+    explicit BasicButton(QWidget *parent = nullptr, int red = 255, int blue = 255, int green = 255 , QString leftIconPath = ":/img/background.jpg",
     QString mainContentText = "Hello", QString otherContentText = "World", QString rightIconPath = ":/img/background.jpg");
 
     //对象左侧图标

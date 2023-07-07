@@ -27,7 +27,7 @@ AddingWidget::AddingWidget(QWidget *parent)
     exit_btn = new QPushButton(this);
     //设置大小
     exit_btn->resize(40, 40);
-    exit_btn->setStyleSheet("border-image:url(:/img/right.png);");
+    exit_btn->setStyleSheet("border-image:url(:/img/left.png);");
 
     //创建词库按钮
     adding_btn = new myLabelButton(this);
