@@ -9,7 +9,7 @@ AddingWidget::AddingWidget(QWidget *parent)
     this->resize(400, 700);
     this->setAutoFillBackground(true);
     QPalette pal = this->palette();
-    pal.setBrush(this->backgroundRole(), QBrush(QColor(255,255,255)));
+    pal.setBrush(this->backgroundRole(), QBrush(QColor(255,255,255, 150)));
     setPalette(pal);
     //设置标题
     QLabel* label = new QLabel(this);

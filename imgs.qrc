@@ -7,5 +7,7 @@
         <file>img/left.png</file>
         <file>img/right.png</file>
         <file>img/top.png</file>
+        <file>img/newWord.png</file>
+        <file>img/oldWord.png</file>
     </qresource>
 </RCC>

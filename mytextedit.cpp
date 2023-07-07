@@ -18,7 +18,7 @@ myTextEdit::myTextEdit(QWidget *parent)
 
     //设置collect
     collect->resize(60, 20);
-    collect->setText("编辑");
+    collect->setText("收藏");
     collect->move(280, 30);
 
     //初始化edit

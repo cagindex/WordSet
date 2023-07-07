@@ -49,6 +49,7 @@ BasicButton::BasicButton(
     mainContent->move(70, 25);
     mainContent->setText(mainContentText);
     otherContent = new QLabel(this);
+    otherContent->setAlignment(Qt::AlignRight);
     otherContent->resize(50, 20);
     otherContent->move(250, 30);
     otherContent->setText(otherContentText);
@@ -66,8 +67,10 @@ void BasicButton::MoveObject(QLabel* obj, QPoint point)
 
 void BasicButton::enterEvent(QEnterEvent* event)
 {
+    setOpacity(170);
 }
 
 void BasicButton::leaveEvent(QEvent* event)
 {
+    setOpacity(50);
 }

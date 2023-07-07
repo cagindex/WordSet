@@ -3,6 +3,7 @@
 MainWidget::MainWidget(QWidget *parent)
     : QWidget{parent}
 {
+    this->setFixedSize(400, 700);
     //General paramete
     //词库高度
     int wordSet_height = 60;
@@ -47,76 +48,6 @@ MainWidget::MainWidget(QWidget *parent)
     review_btn->myResize(btn_width, btn_height);
     //移动至目标位置
     review_btn->move(review_pos);
-
-
-    /**
-     * Animation part
-     */
-    //设置词库进入动画
-    animation = new QPropertyAnimation(wordSet_widget, "pos");
-    animation->setStartValue(QPoint(0, this->height()));
-    animation->setEndValue(QPoint(0, 0));
-    animation->setDuration(animation_time);
-    //构造词库退出动画
-    animation2 = new QPropertyAnimation(wordSet_widget, "pos");
-    animation2->setStartValue(QPoint(0, 0));
-    animation2->setEndValue(QPoint(0, this->height()));
-    animation2->setDuration(animation_time);
-
-
-    //设置添加词汇进入动画
-    animation3 = new QPropertyAnimation(adding_widget, "pos");
-    animation3->setStartValue(QPoint(-400, 0));
-    animation3->setEndValue(QPoint(0, 0));
-    animation3->setDuration(animation_time);
-    //设置添加词汇退出动画
-    animation4 = new QPropertyAnimation(adding_widget, "pos");
-    animation4->setStartValue(QPoint(0, 0));
-    animation4->setEndValue(QPoint(-400, 0));
-    animation4->setDuration(animation_time);
-
-    //设置复习词汇进入动画
-    animation5 = new QPropertyAnimation(review_widget, "pos");
-    animation5->setStartValue(QPoint(400, 0));
-    animation5->setEndValue(QPoint(0, 0));
-    animation5->setDuration(animation_time);
-    //设置复习词汇退出动画
-    animation6 = new QPropertyAnimation(review_widget, "pos");
-    animation6->setStartValue(QPoint(0, 0));
-    animation6->setEndValue(QPoint(400, 0));
-    animation6->setDuration(animation_time);
-
-    //点击词库进入词库界面
-    connect(wordSet_btn, &myLabelButton::clicked, this, [=](){
-        wordSet_widget->raise();
-        animation->start();
-    });
-    //点击词库退出词库界面
-    connect(wordSet_widget->exit_btn, &QPushButton::clicked, this, [=](){
-        animation2->start();
-    });
-
-    //connect 添加词汇
-    connect(addNew_btn, &myLabelButton::clicked, this, [=](){
-        adding_widget->raise();
-        animation3->start();
-    });
-    connect(adding_widget->exit_btn, &QPushButton::clicked, this, [=](){
-        adding_widget->clearContent();
-        animation4->start();
-    });
-
-    //connect 复习词汇
-    connect(review_btn, &myLabelButton::clicked, this, [=](){
-        review_widget->raise();
-        review_widget->refresh();
-        animation5->start();
-    });
-    connect(review_widget->exit_btn, &QPushButton::clicked, this, [=](){
-        animation6->start();
-    });
-
-
 
     /**
      * 这里打算建一个date对象

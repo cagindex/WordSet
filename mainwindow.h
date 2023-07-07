@@ -7,8 +7,7 @@
 #include "addingwidget.h"
 #include "mainwidget.h"
 #include "reviewwidget.h"
-#include "mylabelbutton.h"
-#include "calendar.h"
+#include "mybackground.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -28,12 +27,10 @@ public:
     ~MainWindow();
 private:
     Ui::MainWindow *ui;
+    //设置虚化值
+    int blurValue = 10;
+
     QWidget* data_widget;
-    myLabelButton* wordSet_btn;
-    myLabelButton* addNew_btn;
-    myLabelButton* review_btn;
-    //日历对象
-    Calendar* calendar;
     //词库动画对象
     QPropertyAnimation* animation;
     QPropertyAnimation* animation2;
@@ -43,6 +40,8 @@ private:
     //复习词汇动画对象
     QPropertyAnimation* animation5;
     QPropertyAnimation* animation6;
+    //背景图片对象
+    MyBackground* background_widget;
     //主界面对象
     MainWidget* main_widget;
     //词库对象

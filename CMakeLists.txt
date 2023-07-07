@@ -17,7 +17,9 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         wordsetwidget.cpp
         basicbutton.cpp
+        myBackground.cpp
         myButton.cpp
+        myFont.cpp
         myLabelButton.cpp
         myLineEdit.cpp
         addingwidget.cpp
@@ -35,6 +37,8 @@ set(PROJECT_SOURCES
         myLabelButton.h
         myButton.h
         myLineEdit.h
+        myBackground.h
+        myFont.h
         myTextEdit.h
         calendar.h
         cardset.h

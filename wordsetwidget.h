@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <QPropertyAnimation>
 #include "basicbutton.h"
+#include "myfont.h"
 
 class WordSetWidget : public QWidget
 {

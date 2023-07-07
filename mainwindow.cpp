@@ -7,7 +7,6 @@
 #include <QDebug>
 #include <QLabel>
 #include <QFont>
-#include <QGraphicsBlurEffect>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -19,10 +18,8 @@ MainWindow::MainWindow(QWidget *parent)
     this->setFixedSize(400, 700);
 
     //加载背景图片
-    this->setAutoFillBackground(true);
-    QPalette pal = this->palette();
-    pal.setBrush(this->backgroundRole(), QBrush(QPixmap(":/img/background.jpg").scaled(this->size())));
-    setPalette(pal);
+    background_widget = new MyBackground(this);
+    background_widget->SetBlurEffect(0);
     //构建词库界面
     wordSet_widget = new WordSetWidget(this);
     //将词库界面移动到底部
@@ -43,11 +40,8 @@ MainWindow::MainWindow(QWidget *parent)
     review_widget->show();
 
     //设置开始界面
+    main_widget = new MainWidget(this);
     SetMainPage();
-
-    QGraphicsBlurEffect* blureffect = new QGraphicsBlurEffect;
-    blureffect->setBlurRadius(5);
-    this->setGraphicsEffect(blureffect);
 }
 
 MainWindow::~MainWindow()
@@ -59,52 +53,7 @@ MainWindow::~MainWindow()
 //设置stackWidget的MainPage
 void MainWindow::SetMainPage()
 {
-    //General paramete
-    //词库高度
-    int wordSet_height = 60;
-    //动画执行时间 (单位 毫秒）
-    int animation_time = 400;
-    //添加词汇和复习词汇的左上角坐标
-    QPoint btn_pos(10, 550);
-    //添加词汇和复习词汇的高度
-    int btn_height = 60;
-    //添加词汇和复习词汇的水平间距
-    int btns_dis = 50;
-
-    //添加词汇和复习词汇的宽度
-    int btn_width = (this->width() - (2*btn_pos.rx()) - btns_dis)/2;
-
-    //创建词库按钮
-    wordSet_btn = new myLabelButton(this, 255, 255, 255, 155);
-    //设置名称为词库
-    wordSet_btn->setText("词库");
-    //调整大小
-    wordSet_btn->myResize(this->width() + 100, wordSet_height);
-    //移动至目标位置
-    wordSet_btn->myMove(-50, this->height() - wordSet_btn->height());
-
-    //创建添加新词界面
-    addNew_btn = new myLabelButton(this, 255, 255, 255, 155);
-    //设置名称
-    addNew_btn->setText("添加词汇");
-    //调整大小
-    addNew_btn->myResize(QSize(btn_width, btn_height));
-    //移动至目标位置
-    addNew_btn->myMove(btn_pos);
-
-
-    //复习词汇目标位置
-    QPoint review_pos(btn_pos.rx() + btn_width + btns_dis, btn_pos.ry());
-    //创建复习词汇界面
-    review_btn = new myLabelButton(this, 255, 255, 255, 155);
-    //设置名称
-    review_btn->setText("复习词汇");
-    //调整大小
-    review_btn->myResize(btn_width, btn_height);
-    //移动至目标位置
-    review_btn->move(review_pos);
-
-
+    int animation_time = 200;
     /**
      * Animation part
      */
@@ -143,40 +92,44 @@ void MainWindow::SetMainPage()
     animation6->setDuration(animation_time);
 
     //点击词库进入词库界面
-    connect(wordSet_btn, &myLabelButton::clicked, this, [=](){
+    connect(main_widget->wordSet_btn, &myLabelButton::clicked, this, [=](){
         wordSet_widget->raise();
+        main_widget->hide();
         animation->start();
+        background_widget->SetBlurEffect(blurValue);
     });
     //点击词库退出词库界面
     connect(wordSet_widget->exit_btn, &QPushButton::clicked, this, [=](){
         animation2->start();
+        main_widget->show();
+        background_widget->SetBlurEffect(0);
     });
 
     //connect 添加词汇
-    connect(addNew_btn, &myLabelButton::clicked, this, [=](){
+    connect(main_widget->addNew_btn, &myLabelButton::clicked, this, [=](){
         adding_widget->raise();
+        main_widget->hide();
         animation3->start();
+        background_widget->SetBlurEffect(blurValue);
     });
     connect(adding_widget->exit_btn, &QPushButton::clicked, this, [=](){
         adding_widget->clearContent();
         animation4->start();
+        main_widget->show();
+        background_widget->SetBlurEffect(0);
     });
 
     //connect 复习词汇
-    connect(review_btn, &myLabelButton::clicked, this, [=](){
+    connect(main_widget->review_btn, &myLabelButton::clicked, this, [=](){
         review_widget->raise();
         review_widget->refresh();
         animation5->start();
+        main_widget->hide();
+        background_widget->SetBlurEffect(blurValue);
     });
     connect(review_widget->exit_btn, &QPushButton::clicked, this, [=](){
         animation6->start();
+        main_widget->show();
+        background_widget->SetBlurEffect(0);
     });
-
-
-
-    /**
-     * 这里打算建一个date对象
-     */
-    calendar = new Calendar(this, 255, 255, 255, 155);
-    calendar->move(123, 200);
 }

@@ -8,6 +8,7 @@
 #include "mylineedit.h"
 #include "mytextedit.h"
 #include "myLabelButton.h"
+#include "myfont.h"
 
 class ReviewWidget : public QWidget
 {

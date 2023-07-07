@@ -7,12 +7,13 @@ WordSetWidget::WordSetWidget(QWidget *parent)
     this->resize(400, 700);
     this->setAutoFillBackground(true);
     QPalette pal = this->palette();
-    pal.setBrush(this->backgroundRole(), QBrush(QColor(255,255,255, 200)));
+    pal.setBrush(this->backgroundRole(), QBrush(QColor(255,255,255, 150)));
     setPalette(pal);
     //设置标题
     QLabel* label = new QLabel(this);
     //设置标题内容
     label->setText("我的词库");
+    label->setFont(MyFont::font);
     //设置标题内容居中
     label->setAlignment(Qt::AlignCenter);
     //设置大小
@@ -26,33 +27,37 @@ WordSetWidget::WordSetWidget(QWidget *parent)
     exit_btn->resize(40, 40);
     exit_btn->setStyleSheet("border-image:url(:/img/down.png);");
 
+    int opacity = 50;
     //设置全部已经学习的词汇
-    learned_btn = new BasicButton(this, 255, 0, 0);
+    learned_btn = new BasicButton(this, 255, 0, 0, ":/img/oldWord.png", "熟词本", "词", ":/img/right.png");
     //设置大小
     learned_btn->resize(380, 40);
     //移动到目标位置
     learned_btn->move(10, 100);
 
-    learned_btn->setOpacity(50);
+    learned_btn->setOpacity(opacity);
 
     //设置生词本栏目
-    newWord_btn = new BasicButton(this);
+    newWord_btn = new BasicButton(this, 255, 0, 0, ":/img/newWord.png", "生词本", "词", ":/img/right.png");
     //设置大小
     newWord_btn->resize(380, 40);
     //移动到目标位置
     newWord_btn->move(10, 250);
+    newWord_btn->setOpacity(opacity);
 
     //设置句库栏目
-    newWord_btn = new BasicButton(this);
+    sentence_btn = new BasicButton(this, 255, 0, 0, ":/img/newWord.png", "句库", "句", ":/img/right.png");
     //设置大小
-    newWord_btn->resize(380, 40);
+    sentence_btn->resize(380, 40);
     //移动到目标位置
-    newWord_btn->move(10, 400);
+    sentence_btn->move(10, 400);
+    sentence_btn->setOpacity(opacity);
 
     //设置笔记栏目
-    newWord_btn = new BasicButton(this);
+    notes_btn = new BasicButton(this, 255, 0, 0, ":/img/newWord.png", "笔记", "笔记", ":/img/right.png");
     //设置大小
-    newWord_btn->resize(380, 40);
+    notes_btn->resize(380, 40);
     //移动到目标位置
-    newWord_btn->move(10, 550);
+    notes_btn->move(10, 550);
+    notes_btn->setOpacity(opacity);
 }

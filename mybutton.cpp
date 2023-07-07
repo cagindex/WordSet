@@ -48,6 +48,7 @@ void myButton::setBackColor(QColor c)
 void myButton::setOpacity(int value)
 {
     transparentValue = value;
+    repaint();
 }
 
 void myButton::setXRadius(qreal value){ xRadius = value; }

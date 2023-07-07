@@ -6,7 +6,7 @@ ReviewWidget::ReviewWidget(QWidget *parent, CardSet* p, int i)
     this->resize(400, 700);
     this->setAutoFillBackground(true);
     QPalette pal = this->palette();
-    pal.setBrush(this->backgroundRole(), QBrush(QColor(255,255,255)));
+    pal.setBrush(this->backgroundRole(), QBrush(QColor(255,255,255, 150)));
     setPalette(pal);
     //设置标题
     QLabel* label = new QLabel(this);
@@ -32,6 +32,7 @@ ReviewWidget::ReviewWidget(QWidget *parent, CardSet* p, int i)
     word_label = new QLabel(this);
     //调整
     word_label->setText("单词:");
+    word_label->setFont(MyFont::font);
     word_label->resize(60, 40);
     word_label->move(30, 50);
     word->resize(340, 40);
@@ -42,6 +43,7 @@ ReviewWidget::ReviewWidget(QWidget *parent, CardSet* p, int i)
     mean_edit = new myLineEdit(this);
     //调整
     mean_label->setText("英文释义:");
+    mean_label->setFont(MyFont::font);
     mean_label->resize(60, 40);
     mean_label->move(30, 130);
     mean_edit->resize(340, 60);
@@ -52,6 +54,7 @@ ReviewWidget::ReviewWidget(QWidget *parent, CardSet* p, int i)
     sentence_edit = new myTextEdit(this);
     //调整
     sentence_label->setText("例句:");
+    sentence_label->setFont(MyFont::font);
     sentence_label->resize(60, 40);
     sentence_label->move(30, 210);
     sentence_edit->resize(340, 100);
@@ -62,6 +65,7 @@ ReviewWidget::ReviewWidget(QWidget *parent, CardSet* p, int i)
     note_edit = new myTextEdit(this);
     //调整
     note_label->setText("笔记:");
+    note_label->setFont(MyFont::font);
     note_label->resize(60, 40);
     note_label->move(30, 400);
     note_edit->resize(340, 100);
@@ -258,6 +262,9 @@ void ReviewWidget::setContainer(int index)
 
 void ReviewWidget::loadWord()
 {
+    mean_edit->edit->setCheckState(Qt::Unchecked);
+    sentence_edit->edit->setCheckState(Qt::Unchecked);
+    note_edit->edit->setCheckState(Qt::Unchecked);
     if(itr == container.end())
     {
         qDebug() << "Reach the end of container";
@@ -270,8 +277,8 @@ void ReviewWidget::loadWord()
     }
     word->setText(*((*itr)->word));
     mean_edit->setText(*((*itr)->meaning));
-    sentence_edit->setText(*((*itr)->word));
-    note_edit->setText(*((*itr)->word));
+    sentence_edit->setText(*((*itr)->sentence));
+    note_edit->setText(*((*itr)->note));
 
     if((*itr)->IsSentenceCollected())
         sentence_edit->collect->setCheckState(Qt::Checked);
@@ -308,9 +315,13 @@ void ReviewWidget::refreshContents()
     QString __sentence = sentence_edit->text();
     QString __note = note_edit->text();
 
+    qDebug() << __sentence;
+
     (*itr)->ChangeMeaning(__meaning);
     (*itr)->ChangeSentence(__sentence);
     (*itr)->ChangeNote(__note);
+
+    qDebug() << (*(*itr)->sentence);
 
     if(sentence_edit->collect->isChecked())
         (*itr)->CollectSentence();
