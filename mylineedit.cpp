@@ -1,5 +1,11 @@
 #include "mylineedit.h"
 
+/**
+ * @brief myLineEdit::myLineEdit
+ * @param parent
+ * 能够通过checkbox打开和关闭编辑功能
+ * @author 派蒙今天吃什么
+ */
 myLineEdit::myLineEdit(QWidget *parent)
     : QWidget{parent}
 {

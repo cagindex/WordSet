@@ -19,7 +19,6 @@ public:
     //对象左侧图标
     QLabel* leftIcon;
     QLabel* mainContent;
-    QLabel* otherContent;
     QLabel* rightIcon;
 
     void ResizeObject(QLabel* obj, QSize size);

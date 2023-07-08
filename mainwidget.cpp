@@ -1,5 +1,11 @@
 #include "mainwidget.h"
 
+/**
+ * @brief MainWidget::MainWidget
+ * @param parent
+ * 主界面
+ * @author 派蒙今天吃什么
+ */
 MainWidget::MainWidget(QWidget *parent)
     : QWidget{parent}
 {

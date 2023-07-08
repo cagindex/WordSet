@@ -8,6 +8,12 @@
 #include <QLabel>
 #include <QFont>
 
+/**
+ * @brief MainWindow::MainWindow
+ * @param parent
+ * 基类界面
+ * @author 派蒙今天吃什么
+ */
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -31,7 +37,7 @@ MainWindow::MainWindow(QWidget *parent)
     adding_widget->move(-400, 0);
     adding_widget->show();
     //添加cardset对象
-    cardSetP = new CardSet(this);
+    cardSetP = MyFile::ReadFile();
     adding_widget->setCardSet(cardSetP);
 
     //复习词汇界面
@@ -39,9 +45,23 @@ MainWindow::MainWindow(QWidget *parent)
     review_widget->move(400, 0);
     review_widget->show();
 
+    //设置生词本界面
+    newWordWidget = new NewWordWidget(this, cardSetP);
+    newWordWidget->move(0, 700);
+    //设置熟词界面
+    oldWordWidget = new OldWordWidget(this, cardSetP);
+    oldWordWidget->move(0, 700);
+    //设置句库界面
+    sentenceWidget = new SentenceWidget(this, cardSetP);
+    sentenceWidget->move(0, 700);
+    //设置笔记界面
+    noteWidget = new NoteWidget(this, cardSetP);
+    noteWidget->move(0, 700);
+
     //设置开始界面
     main_widget = new MainWidget(this);
     SetMainPage();
+
 }
 
 MainWindow::~MainWindow()
@@ -132,4 +152,95 @@ void MainWindow::SetMainPage()
         main_widget->show();
         background_widget->SetBlurEffect(0);
     });
+
+    //Animation part
+    //设置进入动画
+    animation_new = new QPropertyAnimation(newWordWidget, "pos");
+    animation_new->setStartValue(QPoint(0, 700));
+    animation_new->setEndValue(QPoint(0, 0));
+    animation_new->setDuration(animation_time);
+    //设置退出动画
+    animation_new2 = new QPropertyAnimation(newWordWidget, "pos");
+    animation_new2->setStartValue(QPoint(0, 0));
+    animation_new2->setEndValue(QPoint(0, 700));
+    animation_new2->setDuration(animation_time);
+
+    //connect 词汇 生词本
+    connect(wordSet_widget->newWord_btn, &BasicButton::clicked, this, [=](){
+        newWordWidget->refresh();
+        newWordWidget->raise();
+        animation_new->start();
+    });
+    connect(newWordWidget->exit_btn, &QPushButton::clicked, this, [=](){
+        animation_new2->start();
+    });
+
+    //设置进入动画
+    animation_old = new QPropertyAnimation(oldWordWidget, "pos");
+    animation_old->setStartValue(QPoint(0, 700));
+    animation_old->setEndValue(QPoint(0, 0));
+    animation_old->setDuration(animation_time);
+    //设置退出动画
+    animation_old2 = new QPropertyAnimation(oldWordWidget, "pos");
+    animation_old2->setStartValue(QPoint(0, 0));
+    animation_old2->setEndValue(QPoint(0, 700));
+    animation_old2->setDuration(animation_time);
+
+    //connect 词汇 生词本
+    connect(wordSet_widget->learned_btn, &BasicButton::clicked, this, [=](){
+        oldWordWidget->refresh();
+        oldWordWidget->raise();
+        animation_old->start();
+    });
+    connect(oldWordWidget->exit_btn, &QPushButton::clicked, this, [=](){
+        animation_old2->start();
+    });
+
+    //设置进入动画
+    animation_sentence = new QPropertyAnimation(sentenceWidget, "pos");
+    animation_sentence->setStartValue(QPoint(0, 700));
+    animation_sentence->setEndValue(QPoint(0, 0));
+    animation_sentence->setDuration(animation_time);
+    //设置退出动画
+    animation_sentence2 = new QPropertyAnimation(sentenceWidget, "pos");
+    animation_sentence2->setStartValue(QPoint(0, 0));
+    animation_sentence2->setEndValue(QPoint(0, 700));
+    animation_sentence2->setDuration(animation_time);
+
+    //connect 词汇 生词本
+    connect(wordSet_widget->sentence_btn, &BasicButton::clicked, this, [=](){
+        sentenceWidget->refresh();
+        sentenceWidget->raise();
+        animation_sentence->start();
+    });
+    connect(sentenceWidget->exit_btn, &QPushButton::clicked, this, [=](){
+        animation_sentence2->start();
+
+    });
+
+    //设置进入动画
+    animation_note = new QPropertyAnimation(noteWidget, "pos");
+    animation_note->setStartValue(QPoint(0, 700));
+    animation_note->setEndValue(QPoint(0, 0));
+    animation_note->setDuration(animation_time);
+    //设置退出动画
+    animation_note2 = new QPropertyAnimation(noteWidget, "pos");
+    animation_note2->setStartValue(QPoint(0, 0));
+    animation_note2->setEndValue(QPoint(0, 700));
+    animation_note2->setDuration(animation_time);
+
+    //connect 词汇 生词本
+    connect(wordSet_widget->notes_btn, &BasicButton::clicked, this, [=](){
+        noteWidget->refresh();
+        noteWidget->raise();
+        animation_note->start();
+    });
+    connect(noteWidget->exit_btn, &QPushButton::clicked, this, [=](){
+        animation_note2->start();
+    });
+}
+
+void MainWindow::closeEvent(QCloseEvent* event)
+{
+    MyFile::WriteFile(cardSetP);
 }

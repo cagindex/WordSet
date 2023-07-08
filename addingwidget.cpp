@@ -1,5 +1,11 @@
 #include "addingwidget.h"
 
+/**
+ * @brief AddingWidget::AddingWidget
+ * @param parent
+ * 添加单词界面模块
+ * @author 派蒙今天吃什么
+ */
 AddingWidget::AddingWidget(QWidget *parent)
     : QWidget{parent}
 {
@@ -86,8 +92,13 @@ AddingWidget::AddingWidget(QWidget *parent)
         QString sentence = sentence_edit->toPlainText();
         QString note = note_edit->toPlainText();
         Card* cardp = new Card(new QString(word), new QString(meaning), new QString(sentence), new QString(note));
-        cardSetP->AddNewCard(cardp);
-        qDebug() << ("Adding " + word + " Successfully");
+
+        int status;
+        status = cardSetP->AddNewCard(cardp);
+        if(status == 0)
+            qDebug() << "Adding the same word";
+        else
+            qDebug() << ("Adding " + word + " Successfully");
         clearContent();
     });
 }

@@ -1,6 +1,12 @@
 #include "wordsetwidget.h"
 #include <QLabel>
 
+/**
+ * @brief WordSetWidget::WordSetWidget
+ * @param parent
+ * 词库主界面模块
+ * @author 派蒙今天吃什么
+ */
 WordSetWidget::WordSetWidget(QWidget *parent)
     : QWidget{parent}
 {

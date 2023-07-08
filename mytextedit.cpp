@@ -1,5 +1,11 @@
 #include "mytextedit.h"
 
+/**
+ * @brief myTextEdit::myTextEdit
+ * @param parent
+ * 能够编辑和收藏的TextEdit对象
+ * @author 派蒙今天吃什么
+ */
 myTextEdit::myTextEdit(QWidget *parent)
     : QWidget{parent}
 {

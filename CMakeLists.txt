@@ -22,13 +22,17 @@ set(PROJECT_SOURCES
         myFont.cpp
         myLabelButton.cpp
         myLineEdit.cpp
+        mysubwidget.cpp
         addingwidget.cpp
         reviewwidget.cpp
+        wordsection.cpp
+        wordwidget.cpp
         mainWidget.cpp
         myTextEdit.cpp
         cardset.cpp
         card.cpp
         calendar.cpp
+        myFile.cpp
         mainwindow.h
         wordsetwidget.h
         mainWidget.h
@@ -44,6 +48,23 @@ set(PROJECT_SOURCES
         cardset.h
         card.h
         reviewwidget.h
+        mysubwidget.h
+        wordwidget.h
+        wordsection.h
+        myFile.h
+
+        textwidget.cpp
+        textwidget.h
+        textsection.cpp
+        textsection.h
+        newwordwidget.cpp
+        newwordwidget.h
+        oldwordwidget.cpp
+        oldwordwidget.h
+        sentencewidget.cpp
+        sentencewidget.h
+        notewidget.cpp
+        notewidget.h
         mainwindow.ui
         imgs.qrc
 )

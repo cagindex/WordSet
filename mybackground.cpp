@@ -1,5 +1,12 @@
 #include "mybackground.h"
 
+/**
+ * @brief MyBackground::MyBackground
+ * @param parent
+ * @param background
+ * 背景界面
+ * @author 派蒙今天吃什么
+ */
 MyBackground::MyBackground(QWidget *parent, QString background)
     : QWidget{parent}
 {

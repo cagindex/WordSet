@@ -2,12 +2,18 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QCloseEvent>
 #include "cardset.h"
 #include "wordsetwidget.h"
 #include "addingwidget.h"
 #include "mainwidget.h"
 #include "reviewwidget.h"
 #include "mybackground.h"
+#include "myfile.h"
+#include "newwordwidget.h"
+#include "oldwordwidget.h"
+#include "sentencewidget.h"
+#include "notewidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,6 +29,8 @@ public:
 
     void SetMainPage();
     void ShowWordSetWidget();
+    //退出事件
+    void closeEvent(QCloseEvent* event);
 
     ~MainWindow();
 private:
@@ -52,5 +60,27 @@ private:
     ReviewWidget* review_widget;
     //卡库对象
     CardSet* cardSetP;
+    //生词本动画
+    QPropertyAnimation* animation_new;
+    QPropertyAnimation* animation_new2;
+    //熟词本动画
+    QPropertyAnimation* animation_old;
+    QPropertyAnimation* animation_old2;
+    //生词本界面
+    NewWordWidget* newWordWidget;
+    //熟词本界面
+    OldWordWidget* oldWordWidget;
+
+    //句库动画
+    QPropertyAnimation* animation_sentence;
+    QPropertyAnimation* animation_sentence2;
+    //笔记动画
+    QPropertyAnimation* animation_note;
+    QPropertyAnimation* animation_note2;
+    //句库界面
+    SentenceWidget* sentenceWidget;
+    //笔记界面
+    NoteWidget* noteWidget;
+
 };
 #endif // MAINWINDOW_H

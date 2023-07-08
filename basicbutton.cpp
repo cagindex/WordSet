@@ -48,11 +48,6 @@ BasicButton::BasicButton(
     mainContent->resize(60, 30);
     mainContent->move(70, 25);
     mainContent->setText(mainContentText);
-    otherContent = new QLabel(this);
-    otherContent->setAlignment(Qt::AlignRight);
-    otherContent->resize(50, 20);
-    otherContent->move(250, 30);
-    otherContent->setText(otherContentText);
 }
 
 void BasicButton::ResizeObject(QLabel* obj, QSize size)

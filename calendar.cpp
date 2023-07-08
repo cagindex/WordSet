@@ -1,5 +1,15 @@
 #include "calendar.h"
 
+/**
+ * @brief Calendar::Calendar
+ * @param parent
+ * @param red
+ * @param green
+ * @param blue
+ * @param t
+ * 日历模块
+ * @author 派蒙今天吃什么
+ */
 Calendar::Calendar(QWidget *parent, int red, int green, int blue, int t)
     : QWidget{parent}, r(red), g(green), b(blue), transparentValue(t)
 {

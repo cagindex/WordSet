@@ -1,5 +1,13 @@
 #include "reviewwidget.h"
 
+/**
+ * @brief ReviewWidget::ReviewWidget
+ * @param parent
+ * @param p
+ * @param i
+ * 复习界面模块
+ * @author 派蒙今天吃什么
+ */
 ReviewWidget::ReviewWidget(QWidget *parent, CardSet* p, int i)
     : QWidget{parent},index(i)
 {

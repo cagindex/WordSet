@@ -1,5 +1,14 @@
 #include "card.h"
 
+/**
+ * @brief Card::Card
+ * @param w
+ * @param m
+ * @param s
+ * @param n
+ * 卡牌对象
+ * @author 派蒙今天吃什：w么
+ */
 Card::Card(QString* w, QString* m, QString* s, QString* n)
     : word(w), meaning(m), sentence(s), note(n)
 {
