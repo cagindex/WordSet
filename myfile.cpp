@@ -32,8 +32,12 @@ void MyFile::WriteFile(CardSet * cs){
         QString str = *((*it)->word);
         str.append("|");
         str.append(*((*it)->meaning)).append("|");
-        str.append(*((*it)->sentence)).append("|");
-        str.append(*((*it)->note)).append("|");
+        QString tmp = (*(*it)->sentence);
+        tmp.replace("\n", "@");
+        str.append(tmp).append("|");
+        QString tmp2 = (*(*it)->sentence);
+        tmp2.replace("\n", "@");
+        str.append(tmp2).append("|");
         str.append(QString::number((*it)->masterLevel)).append("|");
         if( (*it)->IsSentenceCollected() ){
             str += "1|";
@@ -71,6 +75,8 @@ CardSet * MyFile::ReadFile(){
         int master_level = variable_list[4].toInt();
         bool sentence_collected = (variable_list[5] == "1");
         bool note_collected = (variable_list[6] == "1");
+        sentence.replace("@", "\n");
+        note.replace("@", "\n");
         Card * card = new Card(new QString(word), new QString(meaning), new QString(sentence), new QString(note));
         card->ChangeMasterLevel(master_level);
         if( sentence_collected ){ card->CollectSentence(); }
