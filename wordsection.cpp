@@ -42,7 +42,7 @@ void WordSection::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);	// 反锯齿;
-    painter.setBrush(QBrush(QColor(255, 0, 0, 170)));
+    painter.setBrush(QBrush(QColor(0, 191, 255, 170)));
     painter.setPen(Qt::transparent);
     QRect rect = this->rect();
     rect.setWidth(rect.width() - 1);

@@ -35,7 +35,7 @@ WordSetWidget::WordSetWidget(QWidget *parent)
 
     int opacity = 50;
     //设置全部已经学习的词汇
-    learned_btn = new BasicButton(this, 255, 0, 0, ":/img/oldWord.png", "熟词本", "词", ":/img/right.png");
+    learned_btn = new BasicButton(this, 0, 191, 255, ":/img/oldWord.png", "熟词本", "词", ":/img/right.png");
     //设置大小
     learned_btn->resize(380, 40);
     //移动到目标位置
@@ -44,7 +44,7 @@ WordSetWidget::WordSetWidget(QWidget *parent)
     learned_btn->setOpacity(opacity);
 
     //设置生词本栏目
-    newWord_btn = new BasicButton(this, 255, 0, 0, ":/img/newWord.png", "生词本", "词", ":/img/right.png");
+    newWord_btn = new BasicButton(this, 0, 191, 255, ":/img/newWord.png", "生词本", "词", ":/img/right.png");
     //设置大小
     newWord_btn->resize(380, 40);
     //移动到目标位置
@@ -52,7 +52,7 @@ WordSetWidget::WordSetWidget(QWidget *parent)
     newWord_btn->setOpacity(opacity);
 
     //设置句库栏目
-    sentence_btn = new BasicButton(this, 255, 0, 0, ":/img/newWord.png", "句库", "句", ":/img/right.png");
+    sentence_btn = new BasicButton(this, 0, 191, 255, ":/img/sentence.png", "句库", "句", ":/img/right.png");
     //设置大小
     sentence_btn->resize(380, 40);
     //移动到目标位置
@@ -60,7 +60,7 @@ WordSetWidget::WordSetWidget(QWidget *parent)
     sentence_btn->setOpacity(opacity);
 
     //设置笔记栏目
-    notes_btn = new BasicButton(this, 255, 0, 0, ":/img/newWord.png", "笔记", "笔记", ":/img/right.png");
+    notes_btn = new BasicButton(this, 0, 191, 255, ":/img/note.png", "笔记", "笔记", ":/img/right.png");
     //设置大小
     notes_btn->resize(380, 40);
     //移动到目标位置

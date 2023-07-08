@@ -9,5 +9,8 @@
         <file>img/top.png</file>
         <file>img/newWord.png</file>
         <file>img/oldWord.png</file>
+        <file>img/note.png</file>
+        <file>img/sentence.png</file>
+        <file>img/background2.jpg</file>
     </qresource>
 </RCC>
